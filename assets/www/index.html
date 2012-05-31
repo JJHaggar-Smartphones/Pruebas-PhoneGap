@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<title>Tira 1D6 XD</title>
+
+
+
+<style type="text/css">
+
+body { background-image:url("images/tabla.jpg"); 
+
+}
+	
+h1 { 
+  text-align: center; 
+  color:yellow;
+}
+
+p { margin-left: auto; margin-right: auto; }
+
+
+div.contenedor {
+  
+}
+    
+p.boton {
+  background: url(images/boton.png) no-repeat 0 0;
+  width: 150px;
+  height: 150px;
+  display: block;
+  text-indent: -9999px;
+}
+p.boton:hover { background-position: 0 -150px; }
+p.boton:active { background-position: 0 -300px; }
+
+</style>
+
+
+
+<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+
+<script language="JavaScript">
+
+function tiraDados(tipoDados, numeroDados){
+  muestraResultadoDados ( dadosRandom(tipoDados, numeroDados) );
+}
+
+function dadosRandom(tipoDados, numeroDados){
+  var arrayResultados = new Array(); 
+  for (var i=0; i<numeroDados; i++){
+    arrayResultados[arrayResultados.length]=Math.floor((Math.random()*tipoDados)+1); 
+  }
+  return arrayResultados;
+}
+
+function muestraResultadoDados (arrayValores){
+  var capaResultados = document.getElementById("resultados");
+  capaResultados.innerHTML = ""; // vaciamos el div
+  var resultado; var subCapaResultado;
+  
+  while (arrayValores.length>0){
+    resultado = arrayValores.pop();
+    subCapaResultado = document.createElement("div");
+    subCapaResultado.innerHTML = resultado; 
+    capaResultados.appendChild(subCapaResultado);
+  }
+}
+
+</script>
+ 
+</head>
+  <body>
+    <div class="contenedor">
+      <br>
+      <h1>¡Tira el dado!</h1>
+      <p class="boton" onclick="tiraDados(6,1)"></p>
+      <h1><div id="resultados">...</div></h1>
+    </div>
+    
+    <a href="http://jjhaggar.net84.net/zombietactics/pruebas/estructura_interfaz_combates.html">zombis</a>
+    
+  </body>
+</html>
